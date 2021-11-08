@@ -4,8 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class PersonTests {
     private static Person person;
@@ -17,45 +15,45 @@ public class PersonTests {
 
     @Test
     void getFirstNameTestPositive(){
-        assertTrue(person.getFirstName().equals("Miruna"));
+        assertEquals(person.getFirstName().equals("Miruna"),person.getFirstName().equals("Miruna"));
     }
 
     @Test
     void getFirstNameTestNegative(){
-        assertFalse(person.getFirstName().equals("Monika"));
+        assertNotEquals(person.getFirstName().equals("Monika"),person.getFirstName().equals("Miruna"));
     }
 
     @Test
     void setFirstNameTestPositive(){
         person.setFirstName("Monika");
-        assertTrue(person.getFirstName().equals("Monika"));
+        assertEquals(person.getFirstName().equals("Monika"),person.getFirstName().equals("Monika"));
     }
 
     @Test
     void setFirstNameTestNegative(){
         person.setFirstName("Monika");
-        assertFalse(person.getFirstName().equals("Miruna"));
+        assertNotEquals(person.getFirstName().equals("Miruna"),person.getFirstName().equals("Monika"));
     }
 
     @Test
     void getLastNameTestPositive(){
-        assertTrue(person.getLastName().equals("Lupas"));
+        assertEquals(person.getLastName().equals("Lupas"),person.getLastName().equals("Lupas"));
     }
 
     @Test
     void getLastNameTestNegative(){
-        assertFalse(person.getLastName().equals("Popescu"));
+        assertNotEquals(person.getLastName().equals("Popescu"),person.getLastName().equals("Lupas"));
     }
 
     @Test
     void setLastNameTestPositive(){
         person.setLastName("Popescu");
-        assertTrue(person.getLastName().equals("Popescu"));
+        assertEquals(person.getLastName().equals("Popescu"),person.getLastName().equals("Popescu"));
     }
 
     @Test
     void setLastNameTestNegative(){
         person.setLastName("Popescu");
-        assertFalse(person.getLastName().equals("Lupas"));
+        assertNotEquals(person.getLastName().equals("Lupas"),person.getLastName().equals("Popescu"));
     }
 }
