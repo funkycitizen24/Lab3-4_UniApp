@@ -1,7 +1,8 @@
 package com.company.repository;
 
 import com.company.model.Student;
-
+import  java.util.stream.Collectors;
+import java.util.Comparator;
 import java.util.List;
 
 public class StudentRepository implements ICrudRepository<Student>{
@@ -93,5 +94,27 @@ public class StudentRepository implements ICrudRepository<Student>{
             }
         }
         return entity;
+    }
+
+    /**
+     *
+     * @return the list of students sorted alphabetically
+     */
+    public List<Student> sort(){
+        return studentList.stream()
+                .sorted(Comparator.comparing(Student::getLastName))
+                .collect(Collectors.toList());
+    }
+
+    /**
+     *
+     * @param length
+     * @return the student list filtered by the first name length
+     */
+
+    public List<Student> filter(int length){
+        return studentList.stream()
+                .filter(str -> str.getFirstName().length() > length)
+                .collect(Collectors.toList());
     }
 }

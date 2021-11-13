@@ -3,7 +3,8 @@ package com.company.repository;
 import com.company.model.Course;
 import com.company.model.Student;
 import com.company.model.Teacher;
-
+import java.util.stream.Collectors;
+import java.util.Comparator;
 import java.util.List;
 
 public class TeacherRepository implements ICrudRepository<Teacher>{
@@ -114,5 +115,26 @@ public class TeacherRepository implements ICrudRepository<Teacher>{
             }
         }
         course.getStudentsEnrolled().clear(); // it clears all students enrolled in the course
+    }
+
+    /**
+     *
+     * @return list of teachers sorted alphabetically by last name
+     */
+    public List<Teacher> sort(){
+        return teacherList.stream()
+                .sorted(Comparator.comparing(Teacher::getLastName))
+                .collect(Collectors.toList());
+    }
+
+    /**
+     *
+     * @param length
+     * @return list of teachers filtered by the first name length
+     */
+    public List<Teacher> filter(int length){
+        return teacherList.stream()
+                .filter(str -> str.getFirstName().length()> length)
+                .collect(Collectors.toList());
     }
 }
