@@ -1,0 +1,7 @@
+Course Name: BD
+Students:
+Andreea Vrabie
+
+Course Name: SDA
+Students:
+Miruna Lupas
